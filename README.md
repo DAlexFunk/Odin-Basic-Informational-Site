@@ -2,7 +2,8 @@
 The Basic Informational Site project from The Odin Project
 
 ## About
-This is the basic information site from The Odin Project. This project is meant to practice using Node as a simple server for a website. Because of this, the layout of the pages is not the focus and is thus as basic as possible.
+This is the basic information site from The Odin Project. This project is meant to practice using Node as a simple server for a website. Because of this, the layout of the pages is not the focus and is thus as basic as possible.\
+UPDATE 11/18/2024: Updated the script to use the Express Library instead of vanilla NodeJS.
 
 ## Use
 * Start the server by running script.js.
