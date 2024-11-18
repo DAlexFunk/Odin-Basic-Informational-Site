@@ -1,25 +1,15 @@
-const http = require("http");
-const fs = require("fs");
+const express = require("express");
+const path = require("path");
 
-const server = http
-  .createServer((req, res) => {
-    res.writeHead(200, { "content-type": "text/html" });
+const app = express();
+const options = { root: path.join(__dirname) };
+const PORT = 8080;
 
-    switch (req.url) {
-      case "/":
-        res.write(fs.readFileSync("./index.html", "utf8"));
-        break;
-      case "/about":
-        res.write(fs.readFileSync("./about.html", "utf8"));
-        break;
-      case "/contact-me":
-        res.write(fs.readFileSync("./contact-me.html", "utf8"));
-        break;
-      default:
-        res.write(fs.readFileSync("./404.html", "utf8"));
-        break;
-    }
+app.get("/", (req, res) => res.sendFile("./index.html", options));
+app.get("/about", (req, res) => res.sendFile("./about.html", options));
+app.get("/contact-me", (req, res) => res.sendFile("./contact-me.html", options));
+app.get(/\/.+/, (req, res) => res.sendFile("./404.html", options));
 
-    res.end();
-  })
-  .listen(8080);
+app.listen(PORT, () => {
+  console.log(`App running on port ${PORT}`);
+});
